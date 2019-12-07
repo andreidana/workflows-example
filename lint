@@ -1,0 +1,18 @@
+#ESLint run example
+
+workflow "New workflow" {
+  on = "push"
+  resolves = ["ESLint"]
+}
+action "ESLint" {
+  uses = "stefanoeb/eslint-action@master"
+}
+By default, it will run ESLint through all the files in the project. But you can also specify a glob of files on the args, just like ESLint:
+workflow "New workflow" {
+  on = "push"
+  resolves = ["ESLint"]
+}
+action "ESLint" {
+  uses = "stefanoeb/eslint-action@master"
+  args = "index.js src/**.js"
+}
